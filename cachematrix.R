@@ -1,21 +1,20 @@
 ## write a pair of functions that cache the inverse of a matrix.
 
 ## makeCacheMatrix: This function creates a special "matrix" object 
-##that can cache its inverse.
+##that can cache the matrix and it's inverse.
 ##cacheSolve: This function computes the inverse of the special "matrix"
 ##returned by makeCacheMatrix above. If the inverse has already been 
-##calculated (and the matrix has not changed), then the cachesolve should
+##calculated and the matrix has not reseted, then the cachesolve should
 ##retrieve the inverse from the cache.
+
 
 ## This function creates a special "matrix", which is really a list of
 ## functions.
-## 1 set the value of the matrix, ans reset to NULL the inv value.
+## 1 set the value of the matrix, and reset to NULL the inv value.
 ## 2 assign or caches the matrix in the function getmatrix().
 ## 3 set the inverse matrix obtained to inv in contained in a parent
 ## enviroment.
 ## 4 cache the inv matrix in the function getinverse().
-
-
 makeCacheMatrix <- function(x = matrix()) {
      inv<-NULL
      setmatrix<-function(y){
@@ -37,8 +36,11 @@ makeCacheMatrix <- function(x = matrix()) {
 ## assign the inv value to te function cachesolve().
 ## But if inv = NULL, Calculate the inverse matrix of the special "matrix"
 ## stored in makeCachematrix() and set the inverse of this matrix with
-## setmean(inv) function defined in makeCachematrix(). 
-
+## setmean(inv) function defined in makeCachematrix().
+## the second argument "m" is used to reset the matrix in the special "matrix"
+## objetc that is defined in a parent environment.
+## If we reset the matrix the function assigns the new matrix to getmatrix(),
+## calculate it's inverse and assing it by setinvers() function.
 cacheSolve <- function(z=makeCacheMatrix(),m=NULL,...) {
      
      if(!is.null(m)){
